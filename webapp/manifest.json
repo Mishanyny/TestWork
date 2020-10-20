@@ -118,7 +118,26 @@
 						"ResponsiveTableCellsExtension|Categories": {
 							"type": "XML",
 							"className": "sap.ui.core.Fragment",
-							"fragmentName":"Test.ext.view.AddCell"
+							"fragmentName": "Test.ext.view.AddCell"
+						}
+					}
+				},
+				"sap.ui.controllerExtensions": {
+					"sap.suite.ui.generic.template.ObjectPage.view.Details": {
+						"controllerName": "Test.ext.controller.ObjectPageExt",
+						"sap.ui.generic.app": {
+							"Categories": {
+								"EntitySet": "Categories",
+								"Header": {
+									"Actions": {
+										"ActionCategoriesHeader1": {
+											"id": "ActionCategoriesHeader1button",
+											"text": "{@i18n>ActionCategoriesHeader1}",
+											"press": "onClickActionCategoriesHeader1"
+										}
+									}
+								}
+							}
 						}
 					}
 				}

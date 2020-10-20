@@ -127,7 +127,7 @@
 							"className": "sap.ui.core.mvc.View",
 							"viewName": "Test.ext.view.AddFacet",
 							"sap.ui.generic.app": {
-								"title": "{@i18n>Изображение}"
+								"title": "{@i18n>Image}"
 							}
 						}
 					}
@@ -144,6 +144,12 @@
 											"id": "ActionCategoriesHeader1button",
 											"text": "{@i18n>ActionCategoriesHeader1}",
 											"press": "onClickActionCategoriesHeader1"
+										},
+										"ActionCategoriesHeader2": {
+											"id": "ActionCategoriesHeader2button",
+											"text": "{@i18n>ActionCategoriesHeader2}",
+											"press": "onClickActionCategoriesHeader2",
+											"determining": true
 										}
 									}
 								}

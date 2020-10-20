@@ -1,0 +1,125 @@
+<edmx:Edmx xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx" xmlns:sap="http://www.sap.com/Protocols/SAPData" Version="1.0">
+	<edmx:DataServices xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" m:DataServiceVersion="1.0">
+		<Schema xmlns:d="http://schemas.microsoft.com/ado/2007/08/dataservices"
+			xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns="http://schemas.microsoft.com/ado/2008/09/edm"
+			Namespace="NorthwindModel">
+			<EntityType Name="Category">
+				<Key>
+					<PropertyRef Name="CategoryID"/>
+				</Key>
+				<Property xmlns:p8="http://schemas.microsoft.com/ado/2009/02/edm/annotation" Name="CategoryID" Type="Edm.Int32" Nullable="false"
+					p8:StoreGeneratedPattern="Identity" sap:label="ID Категории"/>
+				<Property Name="StatusId" Type="Edm.Int32" Nullable="true" MaxLength="Max" FixedLength="false" sap:label="ID Статуса"/>
+				<Property Name="ResponsibleId" Type="Edm.Int32" Nullable="true" MaxLength="Max" FixedLength="false" sap:label="ID Ответственного"/>
+				<Property Name="CategoryName" Type="Edm.String" Nullable="false" MaxLength="15" Unicode="true" FixedLength="false" sap:label="Категория"/>
+				<Property Name="Description" Type="Edm.String" Nullable="true" MaxLength="Max" Unicode="true" FixedLength="false"
+					sap:label="Описание Категории"/>
+				<Property Name="Picture" Type="Edm.String" Nullable="true" MaxLength="Max" FixedLength="false" sap:label="Изображение"/>
+				<Property Name="ProductsAmount" Type="Edm.Int32" Nullable="true" MaxLength="Max" FixedLength="false" sap:label="Остатки на складе"/>
+				<Property Name="ProductsMax" Type="Edm.Int32" Nullable="true" MaxLength="Max" FixedLength="false" sap:label="Вместимость склада"/>
+				<NavigationProperty Name="Products" Relationship="NorthwindModel.FK_Products_Categories" FromRole="Categories" ToRole="Products"/>
+				<NavigationProperty Name="Responsible" Relationship="NorthwindModel.CategoryToResponsible" FromRole="Categories" ToRole="Responsiblies"/>
+				<NavigationProperty Name="Status" Relationship="NorthwindModel.CategoryToStatus" FromRole="Categories" ToRole="Statuses"/>
+			</EntityType>
+			<EntityType Name="Product">
+				<Key>
+					<PropertyRef Name="ProductID"/>
+				</Key>
+				<Property xmlns:p8="http://schemas.microsoft.com/ado/2009/02/edm/annotation" Name="ProductID" Type="Edm.Int32" Nullable="false"
+					p8:StoreGeneratedPattern="Identity" sap:label="ID Продукта"/>
+				<Property Name="ProductName" Type="Edm.String" Nullable="false" MaxLength="40" Unicode="true" FixedLength="false"
+					sap:label="Название продукта"/>
+				<Property Name="CategoryID" Type="Edm.Int32" Nullable="true" sap:label="ID Категории"/>
+				<Property Name="QuantityPerUnit" Type="Edm.String" Nullable="true" MaxLength="20" Unicode="true" FixedLength="false"
+					sap:label="Количество в пачке"/>
+				<Property Name="UnitPrice" Type="Edm.Decimal" Nullable="true" Precision="19" Scale="4" sap:label="Цена пачки"/>
+				<Property Name="UnitsInStock" Type="Edm.Int16" Nullable="true" sap:label="Количество на складе"/>
+				<Property Name="Discontinued" Type="Edm.Boolean" Nullable="false" sap:label="Снято с производства"/>
+				<NavigationProperty Name="Category" Relationship="NorthwindModel.FK_Products_Categories" FromRole="Products" ToRole="Categories"/>
+			</EntityType>
+			<EntityType Name="Responsible">
+				<Key>
+					<PropertyRef Name="ResponsibleId"/>
+				</Key>
+				<Property xmlns:p8="http://schemas.microsoft.com/ado/2009/02/edm/annotation" Name="ResponsibleId" Type="Edm.Int32" Nullable="false"
+					p8:StoreGeneratedPattern="Identity" sap:label="ID Ответственного"/>
+				<Property Name="RespFirstName" Type="Edm.String" Nullable="false" MaxLength="40" Unicode="true" FixedLength="false"
+					sap:label="Имя ответственного"/>
+				<Property Name="RespMiddleName" Type="Edm.String" Nullable="false" MaxLength="40" Unicode="true" FixedLength="false"
+					sap:label="Фамилия ответственного"/>
+				<Property Name="RespLastName" Type="Edm.String" Nullable="false" MaxLength="40" Unicode="true" FixedLength="false"
+					sap:label="Отчество ответственного"/>
+				<NavigationProperty Name="Categories" Relationship="NorthwindModel.CategoryToResponsible" FromRole="Categories" ToRole="Responsiblies"/>
+			</EntityType>
+			<EntityType Name="Status">
+				<Key>
+					<PropertyRef Name="StatusId"/>
+				</Key>
+				<Property xmlns:p8="http://schemas.microsoft.com/ado/2009/02/edm/annotation" Name="StatusId" Type="Edm.Int32" Nullable="false"
+					p8:StoreGeneratedPattern="Identity" sap:label="ID Статуса"/>
+				<Property Name="StatusText" Type="Edm.String" Nullable="false" MaxLength="40" Unicode="true" FixedLength="false" sap:label="Статус"/>
+				<NavigationProperty Name="Categories" Relationship="NorthwindModel.CategoryToStatus" FromRole="Categories" ToRole="Statuses"/>
+			</EntityType>
+			<Association Name="CategoryToResponsible">
+				<End Role="Categories" Type="NorthwindModel.Category" Multiplicity="*"/>
+				<End Role="Responsiblies" Type="NorthwindModel.Responsible" Multiplicity="0..1"/>
+				<ReferentialConstraint>
+					<Principal Role="Categories">
+						<PropertyRef Name="ResponsibleId"/>
+					</Principal>
+					<Dependent Role="Responsiblies">
+						<PropertyRef Name="ResponsibleId"/>
+					</Dependent>
+				</ReferentialConstraint>
+			</Association>
+			<Association Name="CategoryToStatus">
+				<End Role="Categories" Type="NorthwindModel.Category" Multiplicity="*"/>
+				<End Role="Statuses" Type="NorthwindModel.Status" Multiplicity="0..1"/>
+				<ReferentialConstraint>
+					<Principal Role="Categories">
+						<PropertyRef Name="StatusId"/>
+					</Principal>
+					<Dependent Role="Statuses">
+						<PropertyRef Name="StatusId"/>
+					</Dependent>
+				</ReferentialConstraint>
+			</Association>
+			<Association Name="FK_Products_Categories">
+				<End Role="Categories" Type="NorthwindModel.Category" Multiplicity="0..1"/>
+				<End Role="Products" Type="NorthwindModel.Product" Multiplicity="*"/>
+				<ReferentialConstraint>
+					<Principal Role="Categories">
+						<PropertyRef Name="CategoryID"/>
+					</Principal>
+					<Dependent Role="Products">
+						<PropertyRef Name="CategoryID"/>
+					</Dependent>
+				</ReferentialConstraint>
+			</Association>
+		</Schema>
+		<Schema xmlns:d="http://schemas.microsoft.com/ado/2007/08/dataservices"
+			xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns="http://schemas.microsoft.com/ado/2008/09/edm"
+			Namespace="ODataWeb.Northwind.Model">
+			<EntityContainer xmlns:p7="http://schemas.microsoft.com/ado/2009/02/edm/annotation" Name="NorthwindEntities" p7:LazyLoadingEnabled="true"
+				m:IsDefaultEntityContainer="true">
+				<EntitySet Name="Categories" EntityType="NorthwindModel.Category"/>
+				<EntitySet Name="Products" EntityType="NorthwindModel.Product"/>
+				<EntitySet Name="Responsiblies" EntityType="NorthwindModel.Responsible"/>
+				<EntitySet Name="Statuses" EntityType="NorthwindModel.Status" sap:searchable="true" sap:content-version="1" sap:semantics="fixed-values"/>
+				<AssociationSet Name="FK_Products_Categories" Association="NorthwindModel.FK_Products_Categories">
+					<End Role="Categories" EntitySet="Categories"/>
+					<End Role="Products" EntitySet="Products"/>
+				</AssociationSet>
+				<AssociationSet Name="CategoryToResponsible" Association="NorthwindModel.CategoryToResponsible">
+					<End Role="Categories" EntitySet="Categories"/>
+					<End Role="Responsiblies" EntitySet="Responsiblies"/>
+				</AssociationSet>
+				<AssociationSet Name="CategoryToStatus" Association="NorthwindModel.CategoryToStatus">
+					<End Role="Categories" EntitySet="Categories"/>
+					<End Role="Statuses" EntitySet="Statuses"/>
+				</AssociationSet>
+				<FunctionImport Name="toActiveStatus" EntitySet="Categories" m:HttpMethod="GET"></FunctionImport>
+			</EntityContainer>
+		</Schema>
+	</edmx:DataServices>
+</edmx:Edmx>

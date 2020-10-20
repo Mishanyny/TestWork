@@ -76,6 +76,36 @@ sap.ui.define([
 					}
 				});
 			}
+			
+			// Add custom function import
+			aRequests.push({
+				method: "GET",
+				path: new RegExp("toActiveStatus(.*)"),
+				response: function (oXhr, sUrlParams) {
+					
+					var aParams = sUrlParams.split("=");
+					
+					if (aParams.length < 2) {
+						oXhr.respondJSON(400, {});
+						return true;
+					}
+					
+					if ( Math.random() >= 0.5 ){
+						var sRetParam;
+						switch( aParams[1] ){
+							case "Act": sRetParam = 2; break;
+							case "Del": sRetParam = 3; break;
+							default: sRetParam = 1;
+						}
+						oXhr.respondJSON(200, {}, JSON.stringify({d: {StatusID: sRetParam}}));	
+					}else{
+						oXhr.respondJSON(404, {});
+					}
+					return true;
+				}
+			});
+			oMockServer.setRequests(aRequests);
+			
 			oMockServer.start();
 
 			Log.info("Running the app with mock data");

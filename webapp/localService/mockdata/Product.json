@@ -1,0 +1,75 @@
+[{
+	"ProductID": 1,
+	"ProductName": "prod1",
+	"CategoryID": 1,
+	"QuantityPerUnit": "1 in box",
+	"UnitPrice": 18.0000,
+	"UnitsInStock": 4,
+	"Discontinued": false
+},
+{
+	"ProductID": 2,
+	"ProductName": "prod2",
+	"CategoryID": 1,
+	"QuantityPerUnit": "2 in box",
+	"UnitPrice": 18.0000,
+	"UnitsInStock": 4,
+	"Discontinued": false
+},
+{
+	"ProductID": 3,
+	"ProductName": "prod3",
+	"CategoryID": 1,
+	"QuantityPerUnit": "3 in box",
+	"UnitPrice": 18.0000,
+	"UnitsInStock": 4,
+	"Discontinued": false
+},
+{	
+	"ProductID": 4,
+	"ProductName": "prod4",
+	"CategoryID": 1,
+	"QuantityPerUnit": "4 in box",
+	"UnitPrice": 18.0000,
+	"UnitsInStock": 4,
+	"Discontinued": false
+},
+
+{
+	"ProductID": 1,
+	"ProductName": "prod1",
+	"CategoryID": 2,
+	"QuantityPerUnit": "1 in box",
+	"UnitPrice": 18.0000,
+	"UnitsInStock": 4,
+	"Discontinued": false
+},
+{
+	"ProductID": 2,
+	"ProductName": "prod2",
+	"CategoryID": 2,
+	"QuantityPerUnit": "2 in box",
+	"UnitPrice": 18.0000,
+	"UnitsInStock": 4,
+	"Discontinued": false
+},
+{
+	"ProductID": 3,
+	"ProductName": "prod3",
+	"CategoryID": 2,
+	"QuantityPerUnit": "3 in box",
+	"UnitPrice": 18.0000,
+	"UnitsInStock": 4,
+	"Discontinued": false
+},
+{
+	"ProductID": 4,
+	"ProductName": "prod4",
+	"CategoryID": 2,
+	"QuantityPerUnit": "4 in box",
+	"UnitPrice": 18.0000,
+	"UnitsInStock": 4,
+	"Discontinued": false
+}
+
+]

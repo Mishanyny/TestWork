@@ -1,0 +1,14 @@
+[
+{
+	"StatusId": 1,
+	"StatusText": "Новая"
+},
+{
+	"StatusId": 2,
+	"StatusText": "Активная"
+},
+{
+	"StatusId": 3,
+	"StatusText": "Удаленная"
+}
+]

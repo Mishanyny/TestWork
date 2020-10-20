@@ -120,6 +120,16 @@
 							"className": "sap.ui.core.Fragment",
 							"fragmentName": "Test.ext.view.AddCell"
 						}
+					},
+					"sap.suite.ui.generic.template.ObjectPage.view.Details": {
+						"BeforeFacet|Categories|com.sap.vocabularies.UI.v1.FieldGroup::CategoryData": {
+							"type": "XML",
+							"className": "sap.ui.core.mvc.View",
+							"viewName": "Test.ext.view.AddFacet",
+							"sap.ui.generic.app": {
+								"title": "{@i18n>Изображение}"
+							}
+						}
 					}
 				},
 				"sap.ui.controllerExtensions": {

@@ -5,7 +5,7 @@
 	"Picture": "../scr/Cat1.svg",
 	"StatusId": 1,
 	"ResponsibleId": 1,
-	"ProductsAmount": 123,
+	"ProductsAmount": 120,
 	"ProductsMax": 150
 },
 {
@@ -15,7 +15,7 @@
 	"Picture": "../scr/Cat1.svg",
 	"StatusId": 2,
 	"ResponsibleId": 2,
-	"ProductsAmount": 123,
+	"ProductsAmount": 124,
 	"ProductsMax": 150
 },
 {
@@ -25,7 +25,7 @@
 	"Picture": "../scr/Cat1.svg",
 	"StatusId": 1,
 	"ResponsibleId": 3,
-	"ProductsAmount": 123,
+	"ProductsAmount": 100,
 	"ProductsMax": 150
 },
 {
@@ -35,7 +35,7 @@
 	"Picture": "../scr/Cat1.svg",
 	"StatusId": 1,
 	"ResponsibleId": 4,
-	"ProductsAmount": 123,
+	"ProductsAmount": 180,
 	"ProductsMax": 150
 }
 ]

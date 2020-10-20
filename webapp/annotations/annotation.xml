@@ -11,6 +11,14 @@
 	<edmx:DataServices>
 		<Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Test.annotations.annotation.NorthwindModel">
 			<Annotations Target="Metadata.Category">
+				<Annotation Term="UI.Facets">
+					<Collection>
+						<Record Type="UI.ReferenceFacet">
+							<PropertyValue Property="Target" AnnotationPath="Products/@UI.LineItem"/>
+							<PropertyValue Property="Label" String="{@i18n&gt;ProductFacet}"/>
+						</Record>
+					</Collection>
+				</Annotation>
 				<Annotation Term="UI.HeaderFacets">
 					<Collection>
 						<Record Type="UI.ReferenceFacet">
@@ -124,6 +132,21 @@
 							</Collection>
 						</PropertyValue>
 					</Record>
+				</Annotation>
+			</Annotations>
+			<Annotations Target="Metadata.Product">
+				<Annotation Term="UI.LineItem">
+					<Collection>
+						<Record Type="UI.DataField">
+							<PropertyValue Property="Value" Path="ProductName"/>
+						</Record>
+						<Record Type="UI.DataField">
+							<PropertyValue Property="Value" Path="QuantityPerUnit"/>
+						</Record>
+						<Record Type="UI.DataField">
+							<PropertyValue Property="Value" Path="UnitPrice"/>
+						</Record>
+					</Collection>
 				</Annotation>
 			</Annotations>
 		</Schema>

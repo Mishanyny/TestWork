@@ -11,8 +11,26 @@
 	<edmx:DataServices>
 		<Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Test.annotations.annotation.NorthwindModel">
 			<Annotations Target="Metadata.Category">
+				<Annotation Term="UI.FieldGroup" Qualifier="CategoryData">
+					<Record Type="UI.FieldGroupType">
+						<PropertyValue Property="Data">
+							<Collection>
+								<Record Type="UI.DataField">
+									<PropertyValue Property="Value" Path="ProductsAmount"/>
+								</Record>
+								<Record Type="UI.DataField">
+									<PropertyValue Property="Value" Path="ProductsMax"/>
+								</Record>
+							</Collection>
+						</PropertyValue>
+					</Record>
+				</Annotation>
 				<Annotation Term="UI.Facets">
 					<Collection>
+						<Record Type="UI.ReferenceFacet">
+							<PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#CategoryData"/>
+							<PropertyValue Property="Label" String="{@i18n&gt;MainData}"/>
+						</Record>
 						<Record Type="UI.ReferenceFacet">
 							<PropertyValue Property="Target" AnnotationPath="Products/@UI.LineItem"/>
 							<PropertyValue Property="Label" String="{@i18n&gt;ProductFacet}"/>
